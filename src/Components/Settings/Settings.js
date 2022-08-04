@@ -1,9 +1,14 @@
 import React, {useState} from 'react'
 import '../Settings/index.scss'
-function Settings(){
+function Settings(setToggleNavPop){
+
+    // function handleClick(){
+    //     setToggleNavPop(false)
+    // }
+   
     return (
         <div className='settings-container'>
-            <span className='close'>X</span>
+            <button className='close'>X</button>
             <h2>Settings</h2>
             <span>dark mode</span>
 

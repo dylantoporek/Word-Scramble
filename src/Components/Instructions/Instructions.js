@@ -2,9 +2,11 @@ import React, {useState} from 'react'
 import '../Instructions/index.scss'
 
 function Instructions(){
+    
+
     return (
         <div className='instructions-container'>
-            <span className='close'>X</span>
+            <button className='close'>X</button>
             <h2>Instructions</h2>
             <li>Instruction 1</li>
             <li>Instruction 2</li>
