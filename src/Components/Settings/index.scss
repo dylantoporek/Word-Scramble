@@ -1,0 +1,16 @@
+.settings-container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding: 5em;
+    border-radius: 1em;
+    top: 20%;
+    background-color: aliceblue;
+
+    .close{
+        position: absolute;
+        top: 1em;
+        right: 1em;
+    }
+}
