@@ -11,12 +11,10 @@ function Instructions({handleClosePopUp}){
             <button onClick={(e)=> handleClosePopUp(e)} className='close'>X</button>
             </div>
             
-            <div>
-            <p>Instruction 1</p>
-            <p>Instruction 2</p>
-            <p>Instruction 3</p>
-            <p>Instruction 4</p>
-            <p>Instruction 5</p>
+            <div className='instructions'>
+            <p>Submit the highest scoring word you can in 5 tries. Try to use all 7 letters!</p>
+            <p>Each submission must be a valid word, between 4-7 letters.</p>
+            <p>After each submission, your word will be scored, and a definition provided. </p>
             </div>
             
         </div>

@@ -1,40 +1,95 @@
-.instructions-container{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    border-radius: 1em;
-    top: 11%;
-    background-color: aliceblue;
-    width: 100%;
+// Screens larger than 1000px
+@media (min-width: 1000px){
 
-    .pop-up-title{
+    .instructions-container{
+        position: absolute;
         display: flex;
+        flex-direction: column;
         align-self: center;
+        border-radius: 1em;
+        top: 11%;
+        background-color: aliceblue;
+        width: 500px;
 
-        h3{
-            position: relative;
-            align-self: flex-start;
-            padding-bottom: .5em;
-            top: 0em;
-        }
+        .pop-up-title{
+            display: flex;
+            align-self: center;
+            padding-bottom: 1em;
 
-        .close{
-            position: absolute;
-            right: 1em;
-            top: 1.5em;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            font-weight: 900;
+            h3{
+                position: relative;
+                align-self: flex-start;
+                padding-bottom: .5em;
+                top: 0em;
+            }
+
+            .close{
+                position: absolute;
+                right: 1em;
+                top: 1.5em;
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+                font-weight: 900;
+            }
         }
+        .instructions{
+        width: 50%;
+            p{
+                position: relative;
+                padding-bottom: .25em;
+                text-align: start;
+                top: -2em;
+                left: 1em;
+            }
+        }  
     }
-    
-    p{
-        position: relative;
-        padding-bottom: .25em;
-        text-align: start;
-        left: 1em;
-        top: -2em;
+}
+
+// Screens smaller than 1000px
+@media (max-width: 1000px){
+
+    .instructions-container{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        border-radius: 1em;
+        top: 11%;
+        background-color: aliceblue;
+        width: fit-content;
+
+        .pop-up-title{
+            display: flex;
+            align-self: center;
+            padding-bottom: 1em;
+
+            h3{
+                position: relative;
+                align-self: flex-start;
+                padding-bottom: .5em;
+                top: 0em;
+            }
+
+            .close{
+                position: absolute;
+                right: 1em;
+                top: 1.5em;
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+                font-weight: 900;
+            }
+        }
+        .instructions{
+        width: 50%;
+            p{
+                position: relative;
+                padding-bottom: .25em;
+                text-align: start;
+                top: -2em;
+                left: 1em;
+            }
+        }  
     }
 }

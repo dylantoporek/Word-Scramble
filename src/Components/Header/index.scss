@@ -55,7 +55,7 @@
         
         #logo{
             position: absolute;
-            left: 1em;
+            left: .5em;
            
             img{
             max-width: 60px;
@@ -64,7 +64,8 @@
     
         #app-title{
             position: absolute;
-            left: 3em;
+            font-size: 30px;
+            left: 2.5em;
         }
     
         #options{
@@ -82,3 +83,45 @@
     }
 }
 
+// Screens smaller than 400px
+@media (max-width: 400px){
+    .header-container{
+        position: fixed;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        border-bottom: 2px solid black;
+        height: 75px;
+        
+        
+        #logo{
+            position: absolute;
+            left: .5em;
+           
+            img{
+            max-width: 40px;
+           }
+        }
+    
+        #app-title{
+            position: absolute;
+            font-size: 25px;
+            left: 2em;
+        }
+    
+        #options{
+            display: flex;
+            position: absolute;
+            right: 1em;
+            gap: .25em;
+            
+            img{
+                cursor: pointer;
+                max-width: 30px;
+            }
+        }
+           
+    }
+}
