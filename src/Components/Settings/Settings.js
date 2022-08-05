@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import '../Settings/index.scss'
-function Settings(setToggleNavPop){
+
+function Settings({handleClosePopUp}){
 
     // function handleClick(){
     //     setToggleNavPop(false)
@@ -8,7 +9,7 @@ function Settings(setToggleNavPop){
    
     return (
         <div className='settings-container'>
-            <button className='close'>X</button>
+            <button onClick={(e)=> handleClosePopUp(e)} className='close'>X</button>
             <h2>Settings</h2>
             <span>dark mode</span>
 

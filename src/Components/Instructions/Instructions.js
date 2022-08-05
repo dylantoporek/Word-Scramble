@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import '../Instructions/index.scss'
 
-function Instructions(){
+function Instructions({handleClosePopUp}){
     
 
     return (
         <div className='instructions-container'>
-            <button className='close'>X</button>
+            <button onClick={(e)=> handleClosePopUp(e)} className='close'>X</button>
             <h2>Instructions</h2>
             <li>Instruction 1</li>
             <li>Instruction 2</li>

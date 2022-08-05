@@ -10,20 +10,22 @@ function App() {
   const [toggleNavPop, setToggleNavPop] = useState(false)
   
 
+ // Open function for Instructions and Settings
   function handleNavClick(e){
     if (!toggleNavPop && !showNavClick){
         setToggleNavPop(true);
         setShowNavClick(e.target.id)
-    } if (showNavClick !== e.target.id){
+    } if (showNavClick !== e.target.id || !toggleNavPop){
       setToggleNavPop(true);
       setShowNavClick(e.target.id)
     } 
-}
+  }
 
-function handleClosePopUp(e){
-  console.log("i was clicked")
- 
-}
+  // 'X button' close function for Instructions and Settings
+  function handleClosePopUp(e){
+    console.log("i was clicked")
+    setToggleNavPop(false)
+  }
 
 
 //   const word = 'abandon'
@@ -57,7 +59,7 @@ function handleClosePopUp(e){
   return (
     <div className="app-container">
       <Header handleNavClick={handleNavClick}/>
-      <Main setToggleNavPop={setToggleNavPop} toggleNavPop={toggleNavPop} showNavClick={showNavClick}/>
+      <Main handleClosePopUp={handleClosePopUp} toggleNavPop={toggleNavPop} showNavClick={showNavClick}/>
     </div>
   );
 }
