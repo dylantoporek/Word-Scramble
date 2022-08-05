@@ -7,7 +7,7 @@ function Instructions({handleClosePopUp}){
     return (
         <div className='instructions-container'>
             <div className='pop-up-title'>
-            <h2>Instructions</h2>
+            <h3>HOW TO PLAY</h3>
             <button onClick={(e)=> handleClosePopUp(e)} className='close'>X</button>
             </div>
             

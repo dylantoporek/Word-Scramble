@@ -3,33 +3,38 @@
     display: flex;
     flex-direction: column;
     align-self: center;
-    padding: 1em 2em;
     border-radius: 1em;
-    top: 20%;
+    top: 11%;
     background-color: aliceblue;
+    width: 100%;
 
     .pop-up-title{
         display: flex;
+        align-self: center;
 
-        h2{
-            align-self: center;
+        h3{
+            position: relative;
+            align-self: flex-start;
             padding-bottom: .5em;
+            top: 0em;
         }
 
         .close{
-            align-self: center;
+            position: absolute;
+            right: 1em;
+            top: 1.5em;
             border: none;
             background-color: transparent;
             cursor: pointer;
+            font-weight: 900;
         }
     }
-
     
-
-    
-
     p{
         position: relative;
         padding-bottom: .25em;
+        text-align: start;
+        left: 1em;
+        top: -2em;
     }
 }
