@@ -23,7 +23,6 @@ function App() {
 
   // 'X button' close function for Instructions and Settings
   function handleClosePopUp(e){
-    console.log("i was clicked")
     setToggleNavPop(false)
   }
 
