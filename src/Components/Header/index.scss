@@ -9,7 +9,7 @@
         justify-content: center;
         gap: 0em;
         border-bottom: 2px solid black;
-        transition: all .5s ease;
+        height: 100px;
         
         
         #logo{
@@ -26,6 +26,10 @@
             position: absolute;
             right: 2em;
             gap: 2em;
+            
+            img{
+                cursor: pointer;
+            }
         }
            
     }
@@ -41,22 +45,22 @@
         align-items: center;
         justify-content: flex-start;
         border-bottom: 2px solid black;
-        transition: all .5s ease;
-        font-size: smaller;
+        height: 100px;
         
         
         #logo{
-            position: absolute;
+            position: relative;
             left: 1em;
         }
 
         #app-title{
+            font-size: 17px;
             position: relative;
-            left: 2.5em;
+            left: 1.5em;
         }
     
         img{
-            max-width: 40px;
+            max-width: 25px;
         }
     
         #options{
@@ -64,6 +68,11 @@
             position: absolute;
             right: 1em;
             gap: 0em;
+
+            img{
+                max-width: 25px;
+                cursor: pointer;
+            }
         }
            
     }

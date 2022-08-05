@@ -55,9 +55,10 @@ function App() {
 // console.log(wordArr);
 
 
+
   return (
     <div className="app-container">
-      <Header handleNavClick={handleNavClick}/>
+      <Header handleNavClick={handleNavClick} toggleNavPop={toggleNavPop}/>
       <Main handleClosePopUp={handleClosePopUp} toggleNavPop={toggleNavPop} showNavClick={showNavClick}/>
     </div>
   );

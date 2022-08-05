@@ -3,14 +3,24 @@
     display: flex;
     flex-direction: column;
     align-self: center;
-    padding: 5em;
+    padding: 1em 2em;
     border-radius: 1em;
     top: 20%;
     background-color: aliceblue;
 
-    .close{
-        position: absolute;
-        top: 1em;
-        right: 1em;
+    .pop-up-title{
+        display: flex;
+
+        h2{
+            align-self: center;
+            padding-bottom: .5em;
+        }
+
+        .close{
+            align-self: center;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
     }
 }

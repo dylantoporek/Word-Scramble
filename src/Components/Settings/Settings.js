@@ -9,9 +9,15 @@ function Settings({handleClosePopUp}){
    
     return (
         <div className='settings-container'>
-            <button onClick={(e)=> handleClosePopUp(e)} className='close'>X</button>
-            <h2>Settings</h2>
-            <span>dark mode</span>
+            <div className='pop-up-title'>
+                <h2>Settings</h2>
+                <button onClick={(e)=> handleClosePopUp(e)} className='close'>X</button>
+            </div>
+            
+            <div>
+                <span>dark mode</span>
+            </div>
+            
 
         </div>
     )
