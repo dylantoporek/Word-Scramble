@@ -1,14 +1,14 @@
 // Screens larger than 1000px
 @media (min-width: 1000px){
-
     .instructions-container{
+        color: var(--text-primary);
+        background-color: var(--background);
         position: absolute;
         display: flex;
         flex-direction: column;
         align-self: center;
         border-radius: 1em;
         top: 11%;
-        background-color: aliceblue;
         width: 500px;
 
         .pop-up-title{
@@ -34,7 +34,8 @@
             }
         }
         .instructions{
-        width: 50%;
+            width: 90%;
+            align-self: center;
             p{
                 position: relative;
                 padding-bottom: .25em;
@@ -50,13 +51,14 @@
 @media (max-width: 1000px){
 
     .instructions-container{
+        color: var(--text-primary);
+        background-color: var(--background);
         position: absolute;
         display: flex;
         flex-direction: column;
         align-self: center;
         border-radius: 1em;
         top: 11%;
-        background-color: aliceblue;
         width: fit-content;
 
         .pop-up-title{
@@ -82,7 +84,8 @@
             }
         }
         .instructions{
-        width: 50%;
+            width: 90%;
+            align-self: center;
             p{
                 position: relative;
                 padding-bottom: .25em;
