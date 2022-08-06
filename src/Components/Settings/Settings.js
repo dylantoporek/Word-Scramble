@@ -1,8 +1,12 @@
 import React, {useState} from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    toggle
+} from '../../app/Redux Slices/themeSlice'
 import '../Settings/index.scss'
 
 function Settings({handleClosePopUp}){
-
+    const dispatch = useDispatch()
     // function handleClick(){
     //     setToggleNavPop(false)
     // }
@@ -16,6 +20,7 @@ function Settings({handleClosePopUp}){
             
             <div>
                 <span>dark mode</span>
+                <button onClick={()=> dispatch(toggle())}>toggle</button>
             </div>
             
 

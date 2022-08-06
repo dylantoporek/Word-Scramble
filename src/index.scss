@@ -13,8 +13,13 @@ code {
     monospace;
 }
 
-.button{
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+:root {
+  --background: white;
+  --text-primary: black;
 }
+
+[data-theme='d'] {
+  --background: darkgrey;
+  --text-primary: white;
+}
+

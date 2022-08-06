@@ -1,15 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.scss';
 import Header from './Components/Header/Header';
 import Main from './Pages/Main/Main';
+import useLocalStorage from 'use-local-storage';
+import {useDispatch, useSelector} from 'react-redux'
+import {
+  selectTheme
+} from './app/Redux Slices/themeSlice'
 
 function App() {
   const [showNavClick, setShowNavClick] = useState(null);
   const [toggleNavPop, setToggleNavPop] = useState(false)
-  
+  // const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [theme, setTheme] = useSelector(selectTheme);
+  const dispatch = useDispatch()
 
+  console.log(theme)
  // Open function for Instructions and Settings
   function handleNavClick(e){
     if (!toggleNavPop && !showNavClick){
@@ -53,11 +59,10 @@ function App() {
 // var arr = [2, 11, 37, 42];
 // shuffle(wordArr);
 // console.log(wordArr);
-
-
+ 
 
   return (
-    <div className="app-container">
+    <div className="app-container" data-theme={theme}>
       <Header handleNavClick={handleNavClick} toggleNavPop={toggleNavPop}/>
       <Main handleClosePopUp={handleClosePopUp} toggleNavPop={toggleNavPop} showNavClick={showNavClick}/>
     </div>
