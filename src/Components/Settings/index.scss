@@ -1,27 +1,89 @@
-.settings-container{
-    color: var(--text-primary);
-    background-color: var(--background);
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    padding: 1em 2em;
-    border-radius: 1em;
-    top: 20%;
-
-    .pop-up-title{
-        display: flex;
-
-        h2{
+// Screen larger than 1000px
+@media(min-width: 1000px){
+    .settings-container{
+        color: var(--text-primary);
+            background-color: var(--background);
+            position: absolute;
+            display: flex;
+            flex-direction: column;
             align-self: center;
-            padding-bottom: .5em;
+            border-radius: 1em;
+            top: 12%;
+            width: 500px;
+            border: solid 1px var(--text-primary);
+            margin: 1%;
+    
+        .pop-up-title{
+            display: flex;
+            align-self: center;
+            padding-bottom: 1em;
+    
+            h3{
+                position: relative;
+                align-self: flex-start;
+                padding-bottom: .5em;
+                top: 0em;
+            }
+    
+            .close{
+                position: absolute;
+                    right: 1em;
+                    top: 1.5em;
+                    border: none;
+                    background-color: transparent;
+                    cursor: pointer;
+                    font-weight: 900;
+            }
         }
 
-        .close{
+        .settings{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            div{
+                padding: 1em;
+            }
+        }
+    }
+};
+
+// Screen smaller than 1000px
+@media(max-width: 1000px){
+    .settings-container{
+        color: var(--text-primary);
+            background-color: var(--background);
+            position: absolute;
+            display: flex;
+            flex-direction: column;
             align-self: center;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
+            border-radius: 1em;
+            top: 12%;
+            max-width: 500px;
+            border: solid 1px var(--text-primary);
+            margin: 1%;
+    
+        .pop-up-title{
+            display: flex;
+            align-self: center;
+            padding-bottom: 1em;
+    
+            h3{
+                position: relative;
+                align-self: flex-start;
+                padding-bottom: .5em;
+                top: 0em;
+            }
+    
+            .close{
+                position: absolute;
+                    right: 1em;
+                    top: 1.5em;
+                    border: none;
+                    background-color: transparent;
+                    cursor: pointer;
+                    font-weight: 900;
+            }
         }
     }
 }

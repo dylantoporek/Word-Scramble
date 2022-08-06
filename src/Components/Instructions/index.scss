@@ -8,8 +8,10 @@
         flex-direction: column;
         align-self: center;
         border-radius: 1em;
-        top: 11%;
+        top: 14%;
         width: 500px;
+        border: solid 1px var(--text-primary);
+
 
         .pop-up-title{
             display: flex;
@@ -58,8 +60,10 @@
         flex-direction: column;
         align-self: center;
         border-radius: 1em;
-        top: 11%;
-        width: fit-content;
+        top: 13%;
+        max-width: 500px;
+        border: solid 1px var(--text-primary);
+        margin: 1%;
 
         .pop-up-title{
             display: flex;
