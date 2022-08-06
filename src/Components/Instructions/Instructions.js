@@ -1,14 +1,18 @@
 import React, {useState} from 'react'
 import '../Instructions/index.scss'
+import cancel from '../../images/cancel.png'
+import cancelDark from '../../images/cancelDark.png'
+import { useSelector } from 'react-redux'
+import {selectTheme} from '../../app/Redux Slices/themeSlice'
 
 function Instructions({handleClosePopUp}){
-    
+ const theme = useSelector(selectTheme)    
 
     return (
         <div className='instructions-container'>
             <div className='pop-up-title'>
             <h3>HOW TO PLAY</h3>
-            <button onClick={(e)=> handleClosePopUp(e)} className='close'>X</button>
+            {theme === 'light' ? <img src={cancel} onClick={(e)=> handleClosePopUp(e)} className='close'/> : <img src={cancelDark} onClick={(e)=> handleClosePopUp(e)} className='close'/>}
             </div>
             
             <div className='instructions'>

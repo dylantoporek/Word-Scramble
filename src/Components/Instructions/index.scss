@@ -9,7 +9,7 @@
         align-self: center;
         border-radius: 1em;
         top: 14%;
-        width: 500px;
+        width: 30em;
         border: solid 1px var(--text-primary);
 
 
@@ -27,12 +27,10 @@
 
             .close{
                 position: absolute;
-                right: 1em;
-                top: 1.5em;
-                border: none;
-                background-color: transparent;
                 cursor: pointer;
-                font-weight: 900;
+                right: 1em;
+                top: 1.1em;
+                width: 20px;
             }
         }
         .instructions{
@@ -61,7 +59,7 @@
         align-self: center;
         border-radius: 1em;
         top: 13%;
-        max-width: 500px;
+        max-width: 30em;
         border: solid 1px var(--text-primary);
         margin: 1%;
 
@@ -79,12 +77,10 @@
 
             .close{
                 position: absolute;
-                right: 1em;
-                top: 1.5em;
-                border: none;
-                background-color: transparent;
                 cursor: pointer;
-                font-weight: 900;
+                right: 1em;
+                top: 1.1em;
+                width: 20px;
             }
         }
         .instructions{

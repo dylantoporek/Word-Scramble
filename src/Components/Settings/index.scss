@@ -8,8 +8,8 @@
             flex-direction: column;
             align-self: center;
             border-radius: 1em;
-            top: 12%;
-            width: 500px;
+            top: 14%;
+            width: 30em;
             border: solid 1px var(--text-primary);
             margin: 1%;
     
@@ -27,12 +27,10 @@
     
             .close{
                 position: absolute;
+                cursor: pointer;
                     right: 1em;
-                    top: 1.5em;
-                    border: none;
-                    background-color: transparent;
-                    cursor: pointer;
-                    font-weight: 900;
+                    top: 1.1em;
+                    width: 20px;
             }
         }
 
@@ -42,7 +40,9 @@
             align-items: center;
 
             div{
+                display: flex;
                 padding: 1em;
+                gap: 1em
             }
         }
     }
@@ -58,8 +58,8 @@
             flex-direction: column;
             align-self: center;
             border-radius: 1em;
-            top: 12%;
-            max-width: 500px;
+            top: 13%;
+            width: 30em;
             border: solid 1px var(--text-primary);
             margin: 1%;
     
@@ -77,12 +77,22 @@
     
             .close{
                 position: absolute;
-                    right: 1em;
-                    top: 1.5em;
-                    border: none;
-                    background-color: transparent;
-                    cursor: pointer;
-                    font-weight: 900;
+                cursor: pointer;
+                right: 1em;
+                top: 1.1em;
+                width: 20px;
+            }
+        }
+
+        .settings{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            div{
+                display: flex;
+                padding: 1em;
+                gap: 1em
             }
         }
     }
