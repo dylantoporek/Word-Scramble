@@ -25,7 +25,9 @@ function Settings({handleClosePopUp}){
                 <div>
                     <span>DARK MODE</span>
                     {/* <button onClick={()=> dispatch(toggle())}>toggle</button> */}
-                    
+                    <div className='toggle-container'>
+                        <div className='toggler'></div>
+                    </div>
                 </div>
                 
             </div>
