@@ -17,6 +17,7 @@ function App() {
   const dispatch = useDispatch()
 
   const gameWord = useSelector(selectWord)
+  const pointsObj = gameWord.points
 
   // Scramble word function
   function shuffle(array) {
@@ -38,7 +39,6 @@ function App() {
 
   // Scramble the word upon load
   useEffect(() => {
-    console.log(gameWord)
     let word = gameWord.word
     let wordArr = word.split('')
     shuffle(wordArr)
@@ -61,11 +61,24 @@ function App() {
     setToggleNavPop(false)
   }
  
+  function handlePageClick(){
+    if (toggleNavPop){
+      setToggleNavPop(false);
+      setShowNavClick('')
+    } else{
+      return null
+    }
+  }
 
   return (
-    <div className="app-container" data-theme={theme}>
+    <div className="app-container" data-theme={theme} onClick={handlePageClick}>
       <Header handleNavClick={handleNavClick} toggleNavPop={toggleNavPop}/>
-      <Main handleClosePopUp={handleClosePopUp} toggleNavPop={toggleNavPop} showNavClick={showNavClick}/>
+      <Main 
+        handleClosePopUp={handleClosePopUp} 
+        toggleNavPop={toggleNavPop} 
+        showNavClick={showNavClick}
+        scramble={scramble}
+        pointsObj={pointsObj}/>
     </div>
   );
 }

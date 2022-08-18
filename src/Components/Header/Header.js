@@ -13,7 +13,6 @@ import '../Header/index.scss'
 
 function Header({handleNavClick, toggleNavPop}){
     const theme = useSelector(selectTheme)
-console.log(theme)
     return (
             <div className='header-container' style={{
                 opacity: toggleNavPop ? '40%' : 100,
