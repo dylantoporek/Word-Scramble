@@ -5,9 +5,24 @@
     justify-content: center;
     align-content: center;
     align-self: center;
+    gap: 1em;
 
     .letter{
-        font-size: x-large;
-        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        width: 40px;
+        background-color: tan;
+        padding: .5em;
+        border-radius: 1em;
+
+        .score{
+            align-self: flex-end;
+            font-size: medium;
+        }
+
+        .l{
+            align-self: center;
+            font-size: x-large;
+        }
     }
 }

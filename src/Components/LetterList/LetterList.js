@@ -6,8 +6,8 @@ function LetterList({scramble, pointsObj}){
     let scrambleDisplay = scramble.map((letter)=>{
         console.log(pointsObj[letter])
         return <div className='letter'>
-            {pointsObj[letter]}
-            {letter}
+            <span className='score'>{pointsObj[letter]}</span>
+            <span className='l'>{letter}</span>
         </div>
     })
 
