@@ -60,18 +60,9 @@ function App() {
   function handleClosePopUp(e){
     setToggleNavPop(false)
   }
- 
-  function handlePageClick(){
-    if (toggleNavPop){
-      setToggleNavPop(false);
-      setShowNavClick('')
-    } else{
-      return null
-    }
-  }
 
   return (
-    <div className="app-container" data-theme={theme} onClick={handlePageClick}>
+    <div className="app-container" data-theme={theme}>
       <Header handleNavClick={handleNavClick} toggleNavPop={toggleNavPop}/>
       <Main 
         handleClosePopUp={handleClosePopUp} 
