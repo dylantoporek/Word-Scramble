@@ -12,10 +12,18 @@
         justify-self: center;
         align-self: center;
         gap: 1em;
+        border: solid grey;
         
+        button{
+            height: 30px;
+            align-self: center;
+            margin: 1em;
+            border: none;
+            border-radius: 5em;
+        }
         span{
-            border: solid grey;
-            width: 40px;
+            
+            width: 10px;
             height: 63px;
         }
     }
