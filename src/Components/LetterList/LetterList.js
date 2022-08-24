@@ -36,6 +36,13 @@ function LetterList({scramble, pointsObj}){
 
 
     document.body.onkeyup = (e) => {
+        if (!scramble.includes(e.key.toUpperCase())){
+            setErrors({
+                message: 'Letter not availble in this Scramble.',
+                show: true
+            })
+            setTimeout((errorCleanup(), 1000))
+        }
         if (e.key === 'Backspace'){
             dispatch(editWord1())
             if (alreadyUsed.length < 2){
@@ -44,7 +51,43 @@ function LetterList({scramble, pointsObj}){
                 alreadyUsed.splice(-1)
                 setAlreadyUsed([...alreadyUsed])
             }
-            
+        }
+
+        if (scramble.includes(e.key.toUpperCase())){
+  
+            let found = scramble.map((letter, index) => {
+                    if(letter === e.key.toUpperCase()){
+                        return `${letter + index}`
+                    }
+            }).filter((result) => result !== undefined)
+
+            found.forEach((result, index) => {
+                if (alreadyUsed.includes(result)){
+                    found.splice(index, 1)
+                } if (found.length > 1){
+                    found = [found[0]]
+                }
+            })
+
+            if (found.length < 1){
+                setErrors({
+                    message: 'Letter already used in this word.',
+                    show: true
+                })
+                setTimeout((errorCleanup(), 1000))
+            }
+            found.map((result) => {
+                if (alreadyUsed.includes(result)){
+                    setErrors({
+                        message: 'Letter already used in this word.',
+                        show: true
+                    })
+                    setTimeout((errorCleanup(), 1000))
+                } if (!alreadyUsed.includes(result)){
+                    dispatch(formWord1(result[0]))
+                    return setAlreadyUsed([...alreadyUsed, result])
+                }
+            })
         }
     }
     console.log(useSelector(selectWord1))
