@@ -14,6 +14,8 @@ function Settings({handleClosePopUp}){
     const [toggleBoolean, setToggleBoolean] = useState(false)
     const dispatch = useDispatch()
     const theme = useSelector(selectTheme)
+
+    console.log('I added this!')
     
     function handleToggleClick(){
         if (!toggleBoolean){
