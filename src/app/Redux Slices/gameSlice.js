@@ -3,17 +3,17 @@ import {createSlice } from '@reduxjs/toolkit';
 const initialState = {
     word1: {
         letterArr: [],
-        sent: false,
+        sent: true,
         score: 0
     },
     word2: {
         letterArr: [],
-        sent: false,
+        sent: true,
         score: 0
     },
     word3: {
         letterArr: [],
-        sent: false,
+        sent: true,
         score: 0
     },
     word4: {
@@ -36,8 +36,26 @@ const initialState = {
     initialState,
     // The `reducers` field lets us define reducers and generate associated actions
     reducers: {
-    formWord1: (state, action) =>{
-        state.word1.letterArr = [...state.word1.letterArr, action.payload]
+    formWord1: (state, action) => {
+      if (state.word1.sent){
+        state.word2.letterArr = [...state.word2.letterArr, action.payload]
+        console.log('word1 was sent')
+        if (state.word2.sent){
+          state.word3.letterArr = [...state.word3.letterArr, action.payload]
+          console.log("word2 was sent")
+          if (state.word3.sent){
+            state.word4.letterArr = [...state.word4.letterArr, action.payload]
+            console.log("word3 was sent")
+            if (state.word4.sent){
+              state.word5.letterArr = [...state.word5.letterArr, action.payload]
+              if (state.word5.sent){
+                console.log('word5 was sent')
+              }
+            }
+          }
+        }
+      }
+      state.word1.letterArr = [...state.word1.letterArr, action.payload]
     },
     formWord1Score: (state, action) => {
       state.word1.score += action.payload 

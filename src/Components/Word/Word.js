@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import wordSlice from "../../app/Redux Slices/wordSlice";
 import '../Word/index.scss'
 import {useDispatch, useSelector} from 'react-redux'
-import {selectWord1, selectGameOver, selectGuessCount, clearWord1} from '../../app/Redux Slices/gameSlice'
+import {selectWord1, selectWord4, selectGameOver, selectGuessCount, clearWord1} from '../../app/Redux Slices/gameSlice'
 
 function Word(){
     const dispatch = useDispatch()
     let word1 = (useSelector(selectWord1))
-    console.log(word1)
+    let word4 = (useSelector(selectWord4))
+
+    console.log(word4)
     const [errors, setErrors] = useState({
         message: '',
         show: false,
