@@ -5,11 +5,8 @@ import '../Main/index.scss'
 import LetterList from "../../Components/LetterList/LetterList"
 import Word from "../../Components/Word/Word"
 
+
 function Main({showNavClick, toggleNavPop, handleClosePopUp, scramble, pointsObj}){
-    
-    // function handleRandomClick(){
-    //     console.log('iwasclicked')
-    //   }
     
     return (
         <div className='main-container'>

@@ -10,19 +10,27 @@
     .letter{
         display: flex;
         flex-direction: column;
-        width: 40px;
+        width: 50px;
+        height: 70px;
         background-color: tan;
-        padding: .5em;
         border-radius: 1em;
+        cursor: pointer;
 
         .score{
-            align-self: flex-end;
+            position: relative;
+            top: -55px;
+            left: 70%;
             font-size: medium;
+            cursor: pointer;
         }
 
         .l{
-            align-self: center;
+            position: relative;
+            left: 33%;
+            top: 7%;
             font-size: x-large;
+            cursor: pointer;
+            margin-top: 40%;
         }
     }
 }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import '../LetterList/index.scss'
 import {useDispatch, useSelector} from 'react-redux'
-import {selectWord1, selectGameOver, selectGuessCount, formWord1} from '../../app/Redux Slices/gameSlice'
+import {selectWord1, selectGameOver, selectGuessCount, formWord1, editWord1} from '../../app/Redux Slices/gameSlice'
 
 function LetterList({scramble, pointsObj}){
     const [alreadyUsed, setAlreadyUsed] = useState([])
@@ -11,9 +11,6 @@ function LetterList({scramble, pointsObj}){
     })
 
     const dispatch  = useDispatch()
-
-
-
 
     function errorCleanup(){
         setTimeout(()=>{
@@ -37,6 +34,21 @@ function LetterList({scramble, pointsObj}){
         }
     }
 
+
+    document.body.onkeyup = (e) => {
+        if (e.key === 'Backspace'){
+            dispatch(editWord1())
+            if (alreadyUsed.length < 2){
+                setAlreadyUsed([])
+            } if (alreadyUsed.length > 1){
+                alreadyUsed.splice(-1)
+                setAlreadyUsed([...alreadyUsed])
+            }
+            
+        }
+    }
+    console.log(useSelector(selectWord1))
+    console.log(alreadyUsed)
     let scrambleDisplay = scramble.map((letter, index) => {
         return <div key={`${letter}-${index}`} id={`${letter + index}`} className='letter' onClick={handleLetterClick}>
             <span id={`${letter + index}`} className='l'>{letter}</span>
