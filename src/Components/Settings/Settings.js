@@ -16,7 +16,6 @@ function Settings({handleClosePopUp}){
     const theme = useSelector(selectTheme)
     
     function handleToggleClick(){
-        console.log('click')
         if (!toggleBoolean){
             setToggleBoolean(true);
             dispatch(toggle())

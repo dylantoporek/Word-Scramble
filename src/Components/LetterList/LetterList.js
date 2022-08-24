@@ -94,8 +94,7 @@ function LetterList({scramble, pointsObj}){
             })
         }
     }
-    console.log(useSelector(selectWord1))
-    console.log(alreadyUsed)
+
     let scrambleDisplay = scramble.map((letter, index) => {
         return <div key={`${letter}-${index}`} id={`${letter + index}`} className='letter' onClick={handleLetterClick} style={{
             backgroundColor: alreadyUsed.includes(`${letter + index}`) ? 'grey' : 'tan'
