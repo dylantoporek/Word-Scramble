@@ -39,8 +39,12 @@ const initialState = {
     formWord1: (state, action) =>{
         state.word1.letterArr = [...state.word1.letterArr, action.payload]
     },
-    editWord1: (state) => {
+    formWord1Score: (state, action) => {
+      state.word1.score += action.payload 
+    },
+    editWord1: (state, action) => {
       state.word1.letterArr.splice(-1)
+      state.word1.score -= action.payload
     },
       guess: (state) => {
         state.guessCount > 0 ? state.guessCount -= 1 : state.gameOver = true
@@ -49,7 +53,7 @@ const initialState = {
     }
   });
   
-  export const { formWord1, guess, editWord1 } = gameSlice.actions;
+  export const { formWord1, guess, editWord1, formWord1Score } = gameSlice.actions;
   
   // The function below is called a selector and allows us to select a value from
   // the state. Selectors can also be defined inline where they're used instead of

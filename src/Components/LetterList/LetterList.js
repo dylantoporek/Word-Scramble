@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import '../LetterList/index.scss'
 import {useDispatch, useSelector} from 'react-redux'
-import {selectWord1, selectGameOver, selectGuessCount, formWord1, editWord1} from '../../app/Redux Slices/gameSlice'
+import {selectWord1, selectGameOver, selectGuessCount, formWord1, editWord1, formWord1Score} from '../../app/Redux Slices/gameSlice'
 
 function LetterList({scramble, pointsObj}){
     const [alreadyUsed, setAlreadyUsed] = useState([])
@@ -31,14 +31,15 @@ function LetterList({scramble, pointsObj}){
         } else {
             setAlreadyUsed([...alreadyUsed, e.target.id])
             dispatch(formWord1(e.target.id[0]))
+            dispatch(formWord1Score(pointsObj[e.target.id[0]]))
         }
     }
 
 
     document.body.onkeyup = (e) => {
         
-        if (e.key === 'Backspace'){
-            dispatch(editWord1())
+        if (e.key === 'Backspace' && alreadyUsed.length > 0){
+            dispatch(editWord1(pointsObj[alreadyUsed[alreadyUsed.length-1][0]]))
             if (alreadyUsed.length < 2){
                 setAlreadyUsed([])
             } if (alreadyUsed.length > 1){
@@ -87,6 +88,7 @@ function LetterList({scramble, pointsObj}){
                     setTimeout((errorCleanup(), 1000))
                 } if (!alreadyUsed.includes(result)){
                     dispatch(formWord1(result[0]))
+                    dispatch(formWord1Score(pointsObj[result[0]]))
                     return setAlreadyUsed([...alreadyUsed, result])
                 }
             })
@@ -95,7 +97,9 @@ function LetterList({scramble, pointsObj}){
     console.log(useSelector(selectWord1))
     console.log(alreadyUsed)
     let scrambleDisplay = scramble.map((letter, index) => {
-        return <div key={`${letter}-${index}`} id={`${letter + index}`} className='letter' onClick={handleLetterClick}>
+        return <div key={`${letter}-${index}`} id={`${letter + index}`} className='letter' onClick={handleLetterClick} style={{
+            backgroundColor: alreadyUsed.includes(`${letter + index}`) ? 'grey' : 'tan'
+        }}>
             <span id={`${letter + index}`} className='l'>{letter}</span>
             <p id={`${letter + index}`} className='score'>{pointsObj[letter]}</p>
         </div>
