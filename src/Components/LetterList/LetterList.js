@@ -36,13 +36,7 @@ function LetterList({scramble, pointsObj}){
 
 
     document.body.onkeyup = (e) => {
-        if (!scramble.includes(e.key.toUpperCase())){
-            setErrors({
-                message: 'Letter not availble in this Scramble.',
-                show: true
-            })
-            setTimeout((errorCleanup(), 1000))
-        }
+        
         if (e.key === 'Backspace'){
             dispatch(editWord1())
             if (alreadyUsed.length < 2){
@@ -51,6 +45,14 @@ function LetterList({scramble, pointsObj}){
                 alreadyUsed.splice(-1)
                 setAlreadyUsed([...alreadyUsed])
             }
+        }
+
+        if (!scramble.includes(e.key.toUpperCase()) && e.key !== 'Backspace' ){
+            setErrors({
+                message: 'Letter not availble in this Scramble.',
+                show: true
+            })
+            setTimeout((errorCleanup(), 1000))
         }
 
         if (scramble.includes(e.key.toUpperCase())){
