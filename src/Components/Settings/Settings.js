@@ -7,7 +7,7 @@ import {
 import '../Settings/index.scss'
 import cancel from '../../images/cancel.png'
 import cancelDark from '../../images/cancelDark.png'
-import { ToggleSlider }  from "react-toggle-slider";
+
 
 
 function Settings({handleClosePopUp}){
