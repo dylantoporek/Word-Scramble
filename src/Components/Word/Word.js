@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import wordSlice from "../../app/Redux Slices/wordSlice";
 import '../Word/index.scss'
 import {useDispatch, useSelector} from 'react-redux'
-import {selectWord1, selectWord2, selectWord3, selectWord4, selectWord5, selectGameOver, selectGuessCount, clearWord, realWordProtocal} from '../../app/Redux Slices/gameSlice'
+import {selectWord1, selectWord2, selectWord3, selectWord4, selectWord5, selectGameOver, selectGuessCount, clearWord, realWordProtocal, guess, gameOverCheck} from '../../app/Redux Slices/gameSlice'
 
 function Word({handleClearAlreadyUsed}){
     const dispatch = useDispatch()
@@ -11,8 +11,13 @@ function Word({handleClearAlreadyUsed}){
     let word3 = useSelector(selectWord3)
     let word4 = useSelector(selectWord4)
     let word5 = useSelector(selectWord5)
+    let guessCount = useSelector(selectGuessCount)
+    let gameOver = useSelector(selectGameOver)
 
-    console.log(word1, word2, word3, word4, word5)
+    useEffect(()=>{
+        dispatch(gameOverCheck())
+    }, [guessCount])
+
     const [errors, setErrors] = useState({
         message: '',
         show: false,
@@ -37,6 +42,8 @@ function Word({handleClearAlreadyUsed}){
     }
 
     function handleSubmit(e){
+        dispatch(guess())
+
         let wordPieces = [...e.target.value]
         let filteredPieces = wordPieces.filter((piece) => piece !== ',')
         let wordToSubmit = filteredPieces.join('')
@@ -46,7 +53,7 @@ function Word({handleClearAlreadyUsed}){
         .then(response => {
             if (response.results !== undefined){
                 console.log(response)
-                dispatch(realWordProtocal())
+                dispatch(realWordProtocal(e.target.id))
                 handleClearAlreadyUsed()
             } else {
                 setErrors({
@@ -65,7 +72,7 @@ function Word({handleClearAlreadyUsed}){
     </div>
     return (
         <div className='words-container'>
-            <div id='word1'>
+            <div>
                 <span className='word-piece'>{word1.letterArr[0]? word1.letterArr[0] : null}</span>
                 <span className='word-piece'>{word1.letterArr[1]? word1.letterArr[1] : null}</span>
                 <span className='word-piece'>{word1.letterArr[2]? word1.letterArr[2] : null}</span>
@@ -75,9 +82,9 @@ function Word({handleClearAlreadyUsed}){
                 <span className='word-piece'>{word1.letterArr[6]? word1.letterArr[6] : null}</span>
 
                 <p>{word1.score}</p>
-                <button value={word1.letterArr} onClick={handleSubmit}>Submit</button>
+                <button value={word1.letterArr} id='word1' onClick={handleSubmit}>Submit</button>
             </div>
-            <div id='word2'>
+            <div>
                 <span className='word-piece'>{word2.letterArr[0]? word2.letterArr[0] : null}</span>
                 <span className='word-piece'>{word2.letterArr[1]? word2.letterArr[1] : null}</span>
                 <span className='word-piece'>{word2.letterArr[2]? word2.letterArr[2] : null}</span>
@@ -87,9 +94,9 @@ function Word({handleClearAlreadyUsed}){
                 <span className='word-piece'>{word2.letterArr[6]? word2.letterArr[6] : null}</span>
                 
                 <p>{word2.score}</p>
-                <button value={word2.letterArr} onClick={handleSubmit}>Submit</button>
+                <button value={word2.letterArr} id='word2' onClick={handleSubmit}>Submit</button>
             </div>
-            <div id='word3'>
+            <div>
                 <span className='word-piece'>{word3.letterArr[0]? word3.letterArr[0] : null}</span>
                 <span className='word-piece'>{word3.letterArr[1]? word3.letterArr[1] : null}</span>
                 <span className='word-piece'>{word3.letterArr[2]? word3.letterArr[2] : null}</span>
@@ -99,9 +106,9 @@ function Word({handleClearAlreadyUsed}){
                 <span className='word-piece'>{word3.letterArr[6]? word3.letterArr[6] : null}</span>
 
                 <p>{word3.score}</p>
-                <button value={word3.letterArr} onClick={handleSubmit}>Submit</button>
+                <button value={word3.letterArr} id='word3' onClick={handleSubmit}>Submit</button>
             </div>
-            <div id='word4'>
+            <div>
                 <span className='word-piece'>{word4.letterArr[0]? word4.letterArr[0] : null}</span>
                 <span className='word-piece'>{word4.letterArr[1]? word4.letterArr[1] : null}</span>
                 <span className='word-piece'>{word4.letterArr[2]? word4.letterArr[2] : null}</span>
@@ -111,9 +118,9 @@ function Word({handleClearAlreadyUsed}){
                 <span className='word-piece'>{word4.letterArr[6]? word4.letterArr[6] : null}</span>
 
                 <p>{word4.score}</p>
-                <button value={word4.letterArr} onClick={handleSubmit}>Submit</button>
+                <button value={word4.letterArr} id='word4' onClick={handleSubmit}>Submit</button>
             </div>
-            <div id='word5'>
+            <div>
                 <span className='word-piece'>{word5.letterArr[0]? word5.letterArr[0] : null}</span>
                 <span className='word-piece'>{word5.letterArr[1]? word5.letterArr[1] : null}</span>
                 <span className='word-piece'>{word5.letterArr[2]? word5.letterArr[2] : null}</span>
@@ -123,7 +130,7 @@ function Word({handleClearAlreadyUsed}){
                 <span className='word-piece'>{word5.letterArr[6]? word5.letterArr[6] : null}</span>
 
                 <p>{word5.score}</p>
-                <button value={word5.letterArr} onClick={handleSubmit}>Submit</button>
+                <button value={word5.letterArr} id='word5' onClick={handleSubmit}>Submit</button>
             </div>
 
             {errors.show ? errorsDisplay : null}

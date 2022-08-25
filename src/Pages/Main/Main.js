@@ -21,8 +21,6 @@ function Main({showNavClick, toggleNavPop, handleClosePopUp, scramble, pointsObj
     function handleClearAlreadyUsed(){
         setAlreadyUsed([])
     }
-
-    console.log(alreadyUsed)
     return (
         <div className='main-container'>
             <Word handleClearAlreadyUsed={handleClearAlreadyUsed}/>
