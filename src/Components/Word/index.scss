@@ -5,15 +5,26 @@
     flex-direction: column;
     left: 0;
     top: 15%;
+    transition: all ease .5s;
 
     div{
-        display: flex;
+        align-self: center ;
+        display: grid;
         padding: .5em;
-        justify-self: center;
-        align-self: center;
-        gap: 1em;
+        grid-template-columns: repeat(7, 22px) 40px 120px;
+        grid-column-gap: 1em;
         border: solid grey;
+        width: 450px;
         
+        span{
+            align-self: center;
+        }
+
+        p{
+            grid-column: 8;
+            grid-row: 1;
+        }
+
         button{
             height: 30px;
             align-self: center;
@@ -21,10 +32,8 @@
             border: none;
             border-radius: 5em;
         }
-        span{
-            
-            width: 10px;
-            height: 63px;
-        }
+
+        
+        
     }
 }

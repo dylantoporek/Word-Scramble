@@ -72,7 +72,9 @@ function Word({handleClearAlreadyUsed}){
     </div>
     return (
         <div className='words-container'>
-            <div>
+            <div style={{
+                opacity: word1.sent? '50%' : null,
+            }}>
                 <span className='word-piece'>{word1.letterArr[0]? word1.letterArr[0] : null}</span>
                 <span className='word-piece'>{word1.letterArr[1]? word1.letterArr[1] : null}</span>
                 <span className='word-piece'>{word1.letterArr[2]? word1.letterArr[2] : null}</span>
@@ -82,9 +84,13 @@ function Word({handleClearAlreadyUsed}){
                 <span className='word-piece'>{word1.letterArr[6]? word1.letterArr[6] : null}</span>
 
                 <p>{word1.score}</p>
-                <button value={word1.letterArr} id='word1' onClick={handleSubmit}>Submit</button>
+                <button value={word1.letterArr} id='word1' onClick={handleSubmit} style={{
+                    backgroundColor: word1.sent? "lightgreen" : null,
+                }}>Submit</button>
             </div>
-            <div>
+            <div style={{
+                opacity: word2.sent? '50%' : null,
+            }}>
                 <span className='word-piece'>{word2.letterArr[0]? word2.letterArr[0] : null}</span>
                 <span className='word-piece'>{word2.letterArr[1]? word2.letterArr[1] : null}</span>
                 <span className='word-piece'>{word2.letterArr[2]? word2.letterArr[2] : null}</span>
@@ -94,9 +100,13 @@ function Word({handleClearAlreadyUsed}){
                 <span className='word-piece'>{word2.letterArr[6]? word2.letterArr[6] : null}</span>
                 
                 <p>{word2.score}</p>
-                <button value={word2.letterArr} id='word2' onClick={handleSubmit}>Submit</button>
+                <button value={word2.letterArr} id='word2' onClick={handleSubmit} style={{
+                    backgroundColor: word2.sent? "lightgreen" : null,
+                }}>Submit</button>
             </div>
-            <div>
+            <div style={{
+                opacity: word3.sent? '50%' : null,
+            }}>
                 <span className='word-piece'>{word3.letterArr[0]? word3.letterArr[0] : null}</span>
                 <span className='word-piece'>{word3.letterArr[1]? word3.letterArr[1] : null}</span>
                 <span className='word-piece'>{word3.letterArr[2]? word3.letterArr[2] : null}</span>
@@ -106,9 +116,13 @@ function Word({handleClearAlreadyUsed}){
                 <span className='word-piece'>{word3.letterArr[6]? word3.letterArr[6] : null}</span>
 
                 <p>{word3.score}</p>
-                <button value={word3.letterArr} id='word3' onClick={handleSubmit}>Submit</button>
+                <button value={word3.letterArr} id='word3' onClick={handleSubmit} style={{
+                    backgroundColor: word3.sent? "lightgreen" : null,
+                }}>Submit</button>
             </div>
-            <div>
+            <div style={{
+                opacity: word4.sent? '50%' : null,
+            }}>
                 <span className='word-piece'>{word4.letterArr[0]? word4.letterArr[0] : null}</span>
                 <span className='word-piece'>{word4.letterArr[1]? word4.letterArr[1] : null}</span>
                 <span className='word-piece'>{word4.letterArr[2]? word4.letterArr[2] : null}</span>
@@ -118,9 +132,13 @@ function Word({handleClearAlreadyUsed}){
                 <span className='word-piece'>{word4.letterArr[6]? word4.letterArr[6] : null}</span>
 
                 <p>{word4.score}</p>
-                <button value={word4.letterArr} id='word4' onClick={handleSubmit}>Submit</button>
+                <button value={word4.letterArr} id='word4' onClick={handleSubmit} style={{
+                    backgroundColor: word4.sent? "lightgreen" : null,
+                }}>Submit</button>
             </div>
-            <div>
+            <div style={{
+                opacity: word5.sent? '50%' : null,
+            }}>
                 <span className='word-piece'>{word5.letterArr[0]? word5.letterArr[0] : null}</span>
                 <span className='word-piece'>{word5.letterArr[1]? word5.letterArr[1] : null}</span>
                 <span className='word-piece'>{word5.letterArr[2]? word5.letterArr[2] : null}</span>
@@ -130,7 +148,9 @@ function Word({handleClearAlreadyUsed}){
                 <span className='word-piece'>{word5.letterArr[6]? word5.letterArr[6] : null}</span>
 
                 <p>{word5.score}</p>
-                <button value={word5.letterArr} id='word5' onClick={handleSubmit}>Submit</button>
+                <button value={word5.letterArr} id='word5' onClick={handleSubmit} style={{
+                    backgroundColor: word5.sent? "lightgreen" : null,
+                }}>Submit</button>
             </div>
 
             {errors.show ? errorsDisplay : null}

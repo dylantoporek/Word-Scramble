@@ -14,19 +14,17 @@ function Settings({handleClosePopUp}){
     const [toggleBoolean, setToggleBoolean] = useState(false)
     const dispatch = useDispatch()
     const theme = useSelector(selectTheme)
-
-    console.log('I added this!')
     
     function handleToggleClick(){
         if (!toggleBoolean){
             setToggleBoolean(true);
             dispatch(toggle())
-        } else {
+        } if (toggleBoolean){
             setToggleBoolean(false)
             dispatch(toggle())
         }
     }
-    
+
     return (
         <div className='settings-container'>
             <div className='pop-up-title'>
@@ -37,12 +35,11 @@ function Settings({handleClosePopUp}){
             <div className='settings'>
                 <div>
                     <span>DARK MODE</span>
-                    {/* <button onClick={()=> dispatch(toggle())}>toggle</button> */}
                     <div id='toggle-container' onClick={handleToggleClick} style={{
-                        backgroundColor: toggleBoolean ? 'green' : 'grey'
+                        backgroundColor: theme === 'dark' ? 'green' : 'grey'
                     }}>
                         <div id='toggler' style={{
-                            left: toggleBoolean ? '25px' : '2px'
+                            left: theme === 'dark' ? '25px' : '2px'
                         }}></div>
                     </div>
                 </div>
