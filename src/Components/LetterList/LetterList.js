@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from "react";
 import '../LetterList/index.scss'
 import {useDispatch, useSelector} from 'react-redux'
-import {selectWord1, selectGameOver, selectGuessCount, formWord1, editWord1, formWord1Score} from '../../app/Redux Slices/gameSlice'
+import {selectWord1, selectGameOver, selectGuessCount, formWord, editWord, formWordScore} from '../../app/Redux Slices/gameSlice'
 
-function LetterList({scramble, pointsObj}){
-    const [alreadyUsed, setAlreadyUsed] = useState([])
+function LetterList({scramble, pointsObj, alreadyUsed, handleAddToAlreadyUsed, handleRemoveLastFromAlreadyUsed, handleClearAlreadyUsed}){
     const [errors, setErrors] = useState({
         message: '',
         show: false,
@@ -29,9 +28,9 @@ function LetterList({scramble, pointsObj}){
             })
             setTimeout((errorCleanup(), 1000))
         } else {
-            setAlreadyUsed([...alreadyUsed, e.target.id])
-            dispatch(formWord1(e.target.id[0]))
-            dispatch(formWord1Score(pointsObj[e.target.id[0]]))
+            handleAddToAlreadyUsed(e.target.id)
+            dispatch(formWord(e.target.id[0]))
+            dispatch(formWordScore(pointsObj[e.target.id[0]]))
         }
     }
 
@@ -39,12 +38,11 @@ function LetterList({scramble, pointsObj}){
     document.body.onkeyup = (e) => {
         
         if (e.key === 'Backspace' && alreadyUsed.length > 0){
-            dispatch(editWord1(pointsObj[alreadyUsed[alreadyUsed.length-1][0]]))
+            dispatch(editWord(pointsObj[alreadyUsed[alreadyUsed.length-1][0]]))
             if (alreadyUsed.length < 2){
-                setAlreadyUsed([])
+                handleClearAlreadyUsed()
             } if (alreadyUsed.length > 1){
-                alreadyUsed.splice(-1)
-                setAlreadyUsed([...alreadyUsed])
+                handleRemoveLastFromAlreadyUsed()
             }
         }
 
@@ -87,9 +85,9 @@ function LetterList({scramble, pointsObj}){
                     })
                     setTimeout((errorCleanup(), 1000))
                 } if (!alreadyUsed.includes(result)){
-                    dispatch(formWord1(result[0]))
-                    dispatch(formWord1Score(pointsObj[result[0]]))
-                    return setAlreadyUsed([...alreadyUsed, result])
+                    dispatch(formWord(result[0]))
+                    dispatch(formWordScore(pointsObj[result[0]]))
+                    return handleAddToAlreadyUsed(result)
                 }
             })
         }

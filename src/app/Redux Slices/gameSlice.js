@@ -3,17 +3,17 @@ import {createSlice } from '@reduxjs/toolkit';
 const initialState = {
     word1: {
         letterArr: [],
-        sent: true,
+        sent: false,
         score: 0
     },
     word2: {
         letterArr: [],
-        sent: true,
+        sent: false,
         score: 0
     },
     word3: {
         letterArr: [],
-        sent: true,
+        sent: false,
         score: 0
     },
     word4: {
@@ -36,7 +36,7 @@ const initialState = {
     initialState,
     // The `reducers` field lets us define reducers and generate associated actions
     reducers: {
-    formWord1: (state, action) => {
+    formWord: (state, action) => {
       if (state.word1.sent){
         state.word2.letterArr = [...state.word2.letterArr, action.payload]
         console.log('word1 was sent')
@@ -54,28 +54,153 @@ const initialState = {
             }
           }
         }
+      } else {
+        state.word1.letterArr = [...state.word1.letterArr, action.payload]
       }
-      state.word1.letterArr = [...state.word1.letterArr, action.payload]
+      
     },
-    formWord1Score: (state, action) => {
-      state.word1.score += action.payload 
+    formWordScore: (state, action) => {
+      if (state.word1.sent){
+        state.word2.score += action.payload 
+        console.log('word1 was sent')
+        if (state.word2.sent){
+          state.word3.score += action.payload 
+          console.log("word2 was sent")
+          if (state.word3.sent){
+            state.word4.score += action.payload 
+            console.log("word3 was sent")
+            if (state.word4.sent){
+              state.word5.score += action.payload 
+              if (state.word5.sent){
+                console.log('word5 was sent')
+              }
+            }
+          }
+        }
+      }
+      else{
+        state.word1.score += action.payload 
+      }
+      
     },
-    editWord1: (state, action) => {
-      state.word1.letterArr.splice(-1)
-      state.word1.score -= action.payload
+    editWord: (state, action) => {
+      if (state.word1.sent){
+        state.word2.letterArr.splice(-1)
+        state.word2.score -= action.payload
+        console.log('word1 was sent')
+        if (state.word2.sent){
+          state.word3.letterArr.splice(-1)
+          state.word3.score -= action.payload
+          console.log("word2 was sent")
+          if (state.word3.sent){
+            state.word4.letterArr.splice(-1)
+            state.word4.score -= action.payload
+            console.log("word3 was sent")
+            if (state.word4.sent){
+              state.word5.letterArr.splice(-1)
+              state.word5.score -= action.payload
+              if (state.word5.sent){
+                console.log('word5 was sent')
+              }
+            }
+          }
+        }
+      } else{
+        state.word1.letterArr.splice(-1)
+        state.word1.score -= action.payload
+      }
+      
     },
-    clearWord1: (state) => {
-      state.word1.letterArr = []
-      state.word1.score = 0
+    clearWord: (state) => {
+      if (state.word1.sent){
+        state.word2.letterArr = []
+        state.word2.score = 0 
+        console.log('word1 was sent')
+        if (state.word2.sent){
+          state.word3.letterArr = []
+          state.word3.score = 0
+          console.log("word2 was sent")
+          if (state.word3.sent){
+            state.word4.letterArr = []
+            state.word4.score = 0
+            console.log("word3 was sent")
+            if (state.word4.sent){
+              state.word5.letterArr = []
+              state.word5.score = 0 
+              if (state.word5.sent){
+                console.log('word5 was sent')
+              }
+            }
+          }
+        }
+      }
+      else{
+        state.word1.letterArr = []
+        state.word1.score = 0
+      }
+      
     },
-      guess: (state) => {
-        state.guessCount > 0 ? state.guessCount -= 1 : state.gameOver = true
+    guess: (state) => {
+      state.guessCount > 0 ? state.guessCount -= 1 : state.gameOver = true 
+    },
+    realWordProtocal: (state) => {
+      if (state.word1.sent){
+        
+        console.log('word1 was sent')
+        state.word1.sent = true
+        state.word2.sent = true
+        state.word3.sent = false
+        state.word4.sent = false
+        state.word5.sent = false
+
         
       }
+      if (state.word2.sent){
+
+        console.log("word2 was sent")
+        state.word1.sent = true
+        state.word2.sent = true
+        state.word3.sent = true
+        state.word4.sent = false
+        state.word5.sent = false
+
+        
+      }
+      if (state.word3.sent){
+
+        console.log("word3 was sent")
+        state.word1.sent = true
+        state.word2.sent = true
+        state.word3.sent = true
+        state.word4.sent = true
+        state.word5.sent = false
+
+        
+      }
+      if (state.word4.sent){
+
+        console.log('word4 was sent')
+        state.word1.sent = true
+        state.word2.sent = true
+        state.word3.sent = true
+        state.word4.sent = true
+        state.word5.sent = true
+
+      }
+      else{
+        state.word1.sent = true
+        state.word2.sent = false
+        state.word3.sent = false
+        state.word4.sent = false
+        state.word5.sent = false
+      }
+      
+    }
+
     }
   });
   
-  export const { formWord1, guess, editWord1, formWord1Score, clearWord1 } = gameSlice.actions;
+  export const { formWord, guess, editWord, formWordScore, clearWord, realWordProtocal } = gameSlice.actions;
   
   // The function below is called a selector and allows us to select a value from
   // the state. Selectors can also be defined inline where they're used instead of
