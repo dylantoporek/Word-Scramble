@@ -3,11 +3,12 @@ import wordSlice from "../../app/Redux Slices/wordSlice";
 import '../Word/index.scss'
 import 'animate.css'
 import {useDispatch, useSelector} from 'react-redux'
-import {selectWord1, selectWord2, selectWord3, selectWord4, selectWord5, selectGameOver, selectGuessCount, clearWord, realWordProtocal, guess, gameOverCheck} from '../../app/Redux Slices/gameSlice'
+import {recordResponse, selectWord1, selectWord2, selectWord3, selectWord4, selectWord5, selectGameOver, selectGuessCount, clearWord, realWordProtocal, guess, gameOverCheck} from '../../app/Redux Slices/gameSlice'
 
 function Word({handleClearAlreadyUsed, errors, setErrors, errorCleanup}){
     const dispatch = useDispatch()
     let word1 = useSelector(selectWord1)
+    console.log(word1)
     let word2 = useSelector(selectWord2)
     let word3 = useSelector(selectWord3)
     let word4 = useSelector(selectWord4)
@@ -52,6 +53,7 @@ function Word({handleClearAlreadyUsed, errors, setErrors, errorCleanup}){
             .then(response => {
                 if (response.results !== undefined){
                     console.log(response)
+                    dispatch(recordResponse(response))
                     dispatch(realWordProtocal(e.target.id))
                     handleClearAlreadyUsed()
                 } else {

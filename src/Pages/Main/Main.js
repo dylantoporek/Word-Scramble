@@ -73,7 +73,6 @@ function Main({showNavClick, toggleNavPop, handleClosePopUp, scramble, pointsObj
     </div>
 
     const errorDisplay = <div id='errors'>{errors.message}</div>
-        console.log(gameOver)
     return (
         <div className='main-container'>
             {guessDisplay}

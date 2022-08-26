@@ -1,4 +1,6 @@
-function Result(){
+function Result({props}){
+
+    console.log(props)
     return (
         <div>
             Results

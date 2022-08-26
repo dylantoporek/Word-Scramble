@@ -4,27 +4,32 @@ const initialState = {
     word1: {
         letterArr: [],
         sent: false,
-        score: 0
+        score: 0,
+        response: {}
     },
     word2: {
         letterArr: [],
         sent: false,
-        score: 0
+        score: 0,
+        response: {}
     },
     word3: {
         letterArr: [],
         sent: false,
-        score: 0
+        score: 0,
+        response: {}
     },
     word4: {
         letterArr: [],
         sent: false,
-        score: 0
+        score: 0,
+        response: {}
     },
     word5: {
         letterArr: [],
         sent: false,
-        score: 0
+        score: 0,
+        response: {}
     },
     guessCount: 5,
     gameOver: false
@@ -158,12 +163,32 @@ const initialState = {
     },
     realWordProtocal: (state, action) => {
       state[action.payload].sent = true
+    },
+    recordResponse: (state, action) => {
+      if(!state.word1.sent){
+        state.word1.response = {...action.payload}
+      }
+      else if(state.word1.sent && !state.word2.sent){
+        state.word2.response = {...action.payload}
+      }
+      else if(state.word2.sent && !state.word3.sent){
+        state.word3.response = {...action.payload}
+      }
+      else if(state.word3.sent && !state.word4.sent){
+        state.word4.response = {...action.payload}
+      }
+      else if(state.word4.sent && !state.word5.sent){
+        state.word5.response = {...action.payload}
+      }
+      else if(state.word5.sent){
+        console.log('word5 was sent')
+      }
     }
 
     }
   });
   
-  export const { formWord, guess, editWord, formWordScore, clearWord, realWordProtocal, gameOverCheck } = gameSlice.actions;
+  export const { formWord, guess, editWord, formWordScore, clearWord, realWordProtocal, gameOverCheck, recordResponse } = gameSlice.actions;
   
   // The function below is called a selector and allows us to select a value from
   // the state. Selectors can also be defined inline where they're used instead of
