@@ -5,17 +5,15 @@ import Main from './Pages/Main/Main';
 import useLocalStorage from 'use-local-storage';
 import {useDispatch, useSelector} from 'react-redux'
 import {selectTheme} from './app/Redux Slices/themeSlice'
-import {selectWord, selectScramble, selectPoints} from './app/Redux Slices/wordSlice'
+import {selectWord, selectScramble, selectPoints, setWord} from './app/Redux Slices/wordSlice'
 
 
 function App() {
   const [showNavClick, setShowNavClick] = useState(null);
   const [toggleNavPop, setToggleNavPop] = useState(false)
-  // const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const [theme, setTheme] = useSelector(selectTheme);
   const [scramble, setScramble] = useState([])
   const dispatch = useDispatch()
-
   const gameWord = useSelector(selectWord)
   const pointsObj = gameWord.points
 
@@ -39,10 +37,20 @@ function App() {
 
   // Scramble the word upon load
   useEffect(() => {
-    let word = gameWord.word
-    let wordArr = word.split('')
-    shuffle(wordArr)
+    fetch('http://127.0.0.1:4000/words/show')
+    .then(res => res.json())
+    .then(data => {
+      let fetchedWord = data.word.toUpperCase()
+      dispatch(setWord(fetchedWord))
+    })
 }, [])
+
+useEffect(()=>{
+  let word = gameWord.word
+  console.log(word)
+  let wordArr = word.split('')
+  shuffle(wordArr)
+}, [gameWord])
 
 
  // Open function for Instructions and Settings

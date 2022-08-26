@@ -1,7 +1,7 @@
 import {createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    word: 'ABANDON',
+    word: '',
     points: {
         A: 1,
         B: 3,
@@ -38,24 +38,18 @@ const initialState = {
     initialState,
     // The `reducers` field lets us define reducers and generate associated actions
     reducers: {
-    //   scrambleWord: (state) => {
-    //     // Redux Toolkit allows us to write "mutating" logic in reducers. It
-    //     // doesn't actually mutate the state because it uses the Immer library,
-    //     // which detects changes to a "draft state" and produces a brand new
-    //     // immutable state based off those changes
-    //     let wordArr = state.word.split('')
-    //     state.scramble = shuffle(wordArr)
-    //   }
+      setWord: (state, action) => {
+        state.word = action.payload
+      },
     }
   });
   
-  export const {  } = wordSlice.actions;
+  export const { setWord } = wordSlice.actions;
   
   // The function below is called a selector and allows us to select a value from
   // the state. Selectors can also be defined inline where they're used instead of
   // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
   export const selectWord = (state) => state.word
-  export const selectScramble = (state) => state.scramble
   export const selectPoints = (state) => state.points
   
   // We can also write thunks by hand, which may contain both sync and async logic.
