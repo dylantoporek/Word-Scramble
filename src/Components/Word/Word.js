@@ -8,7 +8,6 @@ import {recordResponse, selectWord1, selectWord2, selectWord3, selectWord4, sele
 function Word({handleClearAlreadyUsed, errors, setErrors, errorCleanup}){
     const dispatch = useDispatch()
     let word1 = useSelector(selectWord1)
-    console.log(word1)
     let word2 = useSelector(selectWord2)
     let word3 = useSelector(selectWord3)
     let word4 = useSelector(selectWord4)
