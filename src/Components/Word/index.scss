@@ -9,6 +9,7 @@
         flex-direction: column;
         left: 0;
         top: 15%;
+        
     
     
         div{
@@ -16,7 +17,7 @@
             display: grid;
             padding: .5em;
             grid-template-columns: repeat(7, 20px) 50px 20px 100px;
-            border-radius: 1em;
+            border-bottom: solid grey;
     
             
             span{
@@ -61,7 +62,7 @@
             display: grid;
             padding: .5em;
             grid-template-columns: repeat(7, 20px) 30px 20px 100px;
-            border-radius: 1em;
+            border-bottom: solid grey;
     
             
             span{
