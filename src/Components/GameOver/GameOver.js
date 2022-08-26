@@ -1,6 +1,7 @@
 import '../GameOver/index.scss'
 import {useDispatch, useSelector} from 'react-redux'
 import {selectWord1, selectWord2, selectWord3, selectWord4, selectWord5, selectGameOver} from '../../app/Redux Slices/gameSlice'
+import Result from '../Result/Result.js'
 
 function GameOver(){
     
@@ -24,11 +25,11 @@ function GameOver(){
                 <h3>GAME OVER</h3>
             </div>
             <div className='sent-words'>
-            {word1.sent? <span>{word1Word}</span> : null}
-            {word2.sent? <span>{word2Word}</span> : null}
-            {word3.sent? <span>{word3Word}</span> : null}
-            {word4.sent? <span>{word4Word}</span> : null}
-            {word5.sent? <span>{word5Word}</span> : null}
+            {word1.sent? <Result props={word1}/> : null}
+            {word2.sent? <Result props={word2}/> : null}
+            {word3.sent? <Result props={word3}/> : null}
+            {word4.sent? <Result props={word4}/> : null}
+            {word5.sent? <Result props={word5}/> : null}
             </div>
             
             <p>Total score: {totalScore}</p>
