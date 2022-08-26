@@ -33,7 +33,6 @@ function Settings({handleClosePopUp}){
             </div>
             
             <div className='settings'>
-                <div>
                     <span>DARK MODE</span>
                     <div id='toggle-container' onClick={handleToggleClick} style={{
                         backgroundColor: theme === 'dark' ? 'green' : 'grey'
@@ -41,7 +40,6 @@ function Settings({handleClosePopUp}){
                         <div id='toggler' style={{
                             left: theme === 'dark' ? '25px' : '2px'
                         }}></div>
-                    </div>
                 </div>
                 
             </div>

@@ -1,42 +1,90 @@
 @import 'animate.css';
 
-.words-container{
-    position: absolute;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    top: 15%;
-
-
-    div{
-        align-self: center ;
-        display: grid;
-        padding: .5em;
-        grid-template-columns: repeat(7, 20px) 50px 20px 100px;
-        border-radius: 1em;
-
-        
-        span{
-            align-self: center;
+// Screens larger than 1000px
+@media(min-width: 1000px){
+    .words-container{
+        position: absolute;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        left: 0;
+        top: 15%;
+    
+    
+        div{
+            align-self: center ;
+            display: grid;
+            padding: .5em;
+            grid-template-columns: repeat(7, 20px) 50px 20px 100px;
+            border-radius: 1em;
+    
+            
+            span{
+                align-self: center;
+            }
+    
+            p{
+                grid-column: 9;
+                grid-row: 1;
+            }
+    
+            button{
+                height: 30px;
+                grid-column: 10;
+                grid-row: 1;
+                margin: 1em;
+                border: none;
+                border-radius: 5em;
+                transition: all ease .5s;
+            }
+    
+            
+            
         }
+    }
+}
 
-        p{
-            grid-column: 9;
-            grid-row: 1;
+// Screens smaller than 1000px
+@media(max-width: 1000px){
+    .words-container{
+        display: flex;
+        width: 100%;
+        position: absolute;
+        flex-direction: column;
+        align-self: center;
+        top: 15%;
+        left: 0%;
+    
+    
+        div{
+            align-self: center ;
+            display: grid;
+            padding: .5em;
+            grid-template-columns: repeat(7, 20px) 30px 20px 100px;
+            border-radius: 1em;
+    
+            
+            span{
+                align-self: center;
+            }
+    
+            p{
+                grid-column: 9;
+                grid-row: 1;
+            }
+    
+            button{
+                height: 30px;
+                grid-column: 10;
+                grid-row: 1;
+                margin: 1em;
+                border: none;
+                border-radius: 5em;
+                transition: all ease .5s;
+            }
+    
+            
+            
         }
-
-        button{
-            height: 30px;
-            grid-column: 10;
-            grid-row: 1;
-            margin: 1em;
-            border: none;
-            border-radius: 5em;
-            transition: all ease .5s;
-        }
-
-        
-        
     }
 }
