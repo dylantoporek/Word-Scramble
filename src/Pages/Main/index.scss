@@ -6,4 +6,20 @@
     justify-content: center;
     align-content: center;
     padding: 1em;
+
+    #guess{
+        position: absolute;
+        bottom: 7%;
+        left: 10%;
+        padding: .75em;
+        border: solid grey;
+        font-size: x-large;
+    }
+
+    #errors{
+        position: absolute;
+        top: 70%;
+        align-self: center;
+
+    }
 }

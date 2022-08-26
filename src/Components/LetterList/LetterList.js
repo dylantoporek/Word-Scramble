@@ -3,27 +3,15 @@ import '../LetterList/index.scss'
 import {useDispatch, useSelector} from 'react-redux'
 import {selectWord1, selectGameOver, selectGuessCount, formWord, editWord, formWordScore} from '../../app/Redux Slices/gameSlice'
 
-function LetterList({scramble, pointsObj, alreadyUsed, handleAddToAlreadyUsed, handleRemoveLastFromAlreadyUsed, handleClearAlreadyUsed}){
-    const [errors, setErrors] = useState({
-        message: '',
-        show: false,
-    })
+function LetterList({scramble, pointsObj, alreadyUsed, handleAddToAlreadyUsed, handleRemoveLastFromAlreadyUsed, handleClearAlreadyUsed, errors, setErrors, errorCleanup}){
 
     const dispatch  = useDispatch()
 
-    function errorCleanup(){
-        setTimeout(()=>{
-            setErrors({
-                message: '',
-                show: false
-            })
-        }, 2000)
-            
-    }
+    
     function handleLetterClick(e){
         if (alreadyUsed.includes(e.target.id)){
             setErrors({
-                message: 'Letter already used in this word.',
+                message: `${e.target.id[0].toUpperCase()} is already used in this word.`,
                 show: true
             })
             setTimeout((errorCleanup(), 1000))
@@ -48,7 +36,7 @@ function LetterList({scramble, pointsObj, alreadyUsed, handleAddToAlreadyUsed, h
 
         if (!scramble.includes(e.key.toUpperCase()) && e.key !== 'Backspace' ){
             setErrors({
-                message: 'Letter not availble in this Scramble.',
+                message: `${e.key.toUpperCase()} is not available in this Scramble.`,
                 show: true
             })
             setTimeout((errorCleanup(), 1000))
@@ -72,7 +60,7 @@ function LetterList({scramble, pointsObj, alreadyUsed, handleAddToAlreadyUsed, h
 
             if (found.length < 1){
                 setErrors({
-                    message: 'Letter already used in this word.',
+                    message: `${e.key.toUpperCase()} already used in this word.`,
                     show: true
                 })
                 setTimeout((errorCleanup(), 1000))
@@ -80,7 +68,7 @@ function LetterList({scramble, pointsObj, alreadyUsed, handleAddToAlreadyUsed, h
             found.map((result) => {
                 if (alreadyUsed.includes(result)){
                     setErrors({
-                        message: 'Letter already used in this word.',
+                        message: `${e.key.toUpperCase()} already used in this word.`,
                         show: true
                     })
                     setTimeout((errorCleanup(), 1000))
@@ -102,14 +90,11 @@ function LetterList({scramble, pointsObj, alreadyUsed, handleAddToAlreadyUsed, h
         </div>
     })
 
-    const errorsDisplay = <div>
-        {errors.message}
-    </div>
+  
 
     return (
     <div className='letters'>
         {scrambleDisplay}
-        {errors.show ? errorsDisplay : null}
     </div>
 )
 }

@@ -4,7 +4,7 @@ import '../Word/index.scss'
 import {useDispatch, useSelector} from 'react-redux'
 import {selectWord1, selectWord2, selectWord3, selectWord4, selectWord5, selectGameOver, selectGuessCount, clearWord, realWordProtocal, guess, gameOverCheck} from '../../app/Redux Slices/gameSlice'
 
-function Word({handleClearAlreadyUsed}){
+function Word({handleClearAlreadyUsed, errors, setErrors, errorCleanup}){
     const dispatch = useDispatch()
     let word1 = useSelector(selectWord1)
     let word2 = useSelector(selectWord2)
@@ -18,11 +18,6 @@ function Word({handleClearAlreadyUsed}){
         dispatch(gameOverCheck())
     }, [guessCount])
 
-    const [errors, setErrors] = useState({
-        message: '',
-        show: false,
-    })
-
     const options = {
         method: 'GET',
         headers: {
@@ -30,46 +25,58 @@ function Word({handleClearAlreadyUsed}){
             'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
         }
     };
-    
-    function errorCleanup(){
-        setTimeout(()=>{
+
+    function checkWord(str){
+        if(str.length > 2){
+            return str
+        } else {
             setErrors({
-                message: '',
-                show: false
+                message: 'Word must be 3 letters or longer',
+                show: true
             })
-        }, 5000)
-            
+            setTimeout((errorCleanup(), 1000))
+            return null
+        }
     }
 
     function handleSubmit(e){
-        dispatch(guess())
-
         let wordPieces = [...e.target.value]
         let filteredPieces = wordPieces.filter((piece) => piece !== ',')
         let wordToSubmit = filteredPieces.join('')
-        console.log(wordToSubmit)
-        fetch(`https://wordsapiv1.p.rapidapi.com/words/${wordToSubmit}/`, options)
-        .then(response => response.json())
-        .then(response => {
-            if (response.results !== undefined){
-                console.log(response)
-                dispatch(realWordProtocal(e.target.id))
+        const validatedWord = checkWord(wordToSubmit)
+        if (validatedWord !== null){
+            dispatch(guess())
+            fetch(`https://wordsapiv1.p.rapidapi.com/words/${wordToSubmit}/`, options)
+            .then(response => response.json())
+            .then(response => {
+                if (response.results !== undefined){
+                    console.log(response)
+                    dispatch(realWordProtocal(e.target.id))
+                    handleClearAlreadyUsed()
+                } else {
+                    setErrors({
+                    message: `${wordToSubmit} is not a valid word, try again.`,
+                    show: true
+                })
+                dispatch(clearWord())
+                setTimeout((errorCleanup(), 1000))
                 handleClearAlreadyUsed()
-            } else {
-                setErrors({
-                message: 'Not a word',
-                show: true
+                }
             })
-            dispatch(clearWord())
-            setTimeout((errorCleanup(), 1000))
-            handleClearAlreadyUsed()
-            }
-        })
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
+        }
+        
     }
-    const errorsDisplay = <div>
-        {errors.message}
-    </div>
+    // document.body.onkeydown = (e) => {
+    //     if (e.key === 'Enter'){
+    //         if(!word1.sent){
+    //             console.log('looking for 1')
+    //         } if (word1.sent && !word2.sent){
+    //             console.log('looking for 2')
+    //         }
+    //     }
+    // }
+
     return (
         <div className='words-container'>
             <div style={{
@@ -88,7 +95,8 @@ function Word({handleClearAlreadyUsed}){
                     backgroundColor: word1.sent? "lightgreen" : null,
                 }}>Submit</button>
             </div>
-            <div style={{
+            
+            {word1.sent? <div style={{
                 opacity: word2.sent? '50%' : null,
             }}>
                 <span className='word-piece'>{word2.letterArr[0]? word2.letterArr[0] : null}</span>
@@ -103,8 +111,9 @@ function Word({handleClearAlreadyUsed}){
                 <button value={word2.letterArr} id='word2' onClick={handleSubmit} style={{
                     backgroundColor: word2.sent? "lightgreen" : null,
                 }}>Submit</button>
-            </div>
-            <div style={{
+            </div> : null}
+            
+            {word2.sent? <div style={{
                 opacity: word3.sent? '50%' : null,
             }}>
                 <span className='word-piece'>{word3.letterArr[0]? word3.letterArr[0] : null}</span>
@@ -119,8 +128,8 @@ function Word({handleClearAlreadyUsed}){
                 <button value={word3.letterArr} id='word3' onClick={handleSubmit} style={{
                     backgroundColor: word3.sent? "lightgreen" : null,
                 }}>Submit</button>
-            </div>
-            <div style={{
+            </div> : null}
+            {word3.sent? <div style={{
                 opacity: word4.sent? '50%' : null,
             }}>
                 <span className='word-piece'>{word4.letterArr[0]? word4.letterArr[0] : null}</span>
@@ -135,8 +144,8 @@ function Word({handleClearAlreadyUsed}){
                 <button value={word4.letterArr} id='word4' onClick={handleSubmit} style={{
                     backgroundColor: word4.sent? "lightgreen" : null,
                 }}>Submit</button>
-            </div>
-            <div style={{
+            </div> : null}
+            {word4.sent? <div style={{
                 opacity: word5.sent? '50%' : null,
             }}>
                 <span className='word-piece'>{word5.letterArr[0]? word5.letterArr[0] : null}</span>
@@ -151,9 +160,8 @@ function Word({handleClearAlreadyUsed}){
                 <button value={word5.letterArr} id='word5' onClick={handleSubmit} style={{
                     backgroundColor: word5.sent? "lightgreen" : null,
                 }}>Submit</button>
-            </div>
+            </div> : null}
 
-            {errors.show ? errorsDisplay : null}
         </div>
     )
 }
