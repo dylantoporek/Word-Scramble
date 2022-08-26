@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import '../LetterList/index.scss'
+import 'animate.css'
 import {useDispatch, useSelector} from 'react-redux'
 import {selectWord1, selectGameOver, selectGuessCount, formWord, editWord, formWordScore} from '../../app/Redux Slices/gameSlice'
 

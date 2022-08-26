@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import wordSlice from "../../app/Redux Slices/wordSlice";
 import '../Word/index.scss'
+import 'animate.css'
 import {useDispatch, useSelector} from 'react-redux'
 import {selectWord1, selectWord2, selectWord3, selectWord4, selectWord5, selectGameOver, selectGuessCount, clearWord, realWordProtocal, guess, gameOverCheck} from '../../app/Redux Slices/gameSlice'
 
@@ -82,13 +83,13 @@ function Word({handleClearAlreadyUsed, errors, setErrors, errorCleanup}){
             <div style={{
                 opacity: word1.sent? '50%' : null,
             }}>
-                <span className='word-piece'>{word1.letterArr[0]? word1.letterArr[0] : null}</span>
-                <span className='word-piece'>{word1.letterArr[1]? word1.letterArr[1] : null}</span>
-                <span className='word-piece'>{word1.letterArr[2]? word1.letterArr[2] : null}</span>
-                <span className='word-piece'>{word1.letterArr[3]? word1.letterArr[3] : null}</span>
-                <span className='word-piece'>{word1.letterArr[4]? word1.letterArr[4] : null}</span>
-                <span className='word-piece'>{word1.letterArr[5]? word1.letterArr[5] : null}</span>
-                <span className='word-piece'>{word1.letterArr[6]? word1.letterArr[6] : null}</span>
+                {word1.letterArr[0]?<span className="animate__animated animate__bounceInUp animate__fast">{word1.letterArr[0]}</span> : null}
+                {word1.letterArr[1]?<span className="animate__animated animate__bounceInUp animate__fast">{word1.letterArr[1]}</span> : null}
+                {word1.letterArr[2]?<span className="animate__animated animate__bounceInUp animate__fast">{word1.letterArr[2]}</span> : null}
+                {word1.letterArr[3]?<span className="animate__animated animate__bounceInUp animate__fast">{word1.letterArr[3]}</span> : null}
+                {word1.letterArr[4]?<span className="animate__animated animate__bounceInUp animate__fast">{word1.letterArr[4]}</span> : null}
+                {word1.letterArr[5]?<span className="animate__animated animate__bounceInUp animate__fast">{word1.letterArr[5]}</span> : null}
+                {word1.letterArr[6]?<span className="animate__animated animate__bounceInUp animate__fast">{word1.letterArr[6]}</span> : null}
 
                 <p>{word1.score}</p>
                 <button value={word1.letterArr} id='word1' onClick={handleSubmit} style={{
@@ -99,13 +100,13 @@ function Word({handleClearAlreadyUsed, errors, setErrors, errorCleanup}){
             {word1.sent? <div style={{
                 opacity: word2.sent? '50%' : null,
             }}>
-                <span className='word-piece'>{word2.letterArr[0]? word2.letterArr[0] : null}</span>
-                <span className='word-piece'>{word2.letterArr[1]? word2.letterArr[1] : null}</span>
-                <span className='word-piece'>{word2.letterArr[2]? word2.letterArr[2] : null}</span>
-                <span className='word-piece'>{word2.letterArr[3]? word2.letterArr[3] : null}</span>
-                <span className='word-piece'>{word2.letterArr[4]? word2.letterArr[4] : null}</span>
-                <span className='word-piece'>{word2.letterArr[5]? word2.letterArr[5] : null}</span>
-                <span className='word-piece'>{word2.letterArr[6]? word2.letterArr[6] : null}</span>
+                {word2.letterArr[0]?<span className="animate__animated animate__bounceInUp animate__fast">{word2.letterArr[0]}</span> : null}
+                {word2.letterArr[1]?<span className="animate__animated animate__bounceInUp animate__fast">{word2.letterArr[1]}</span> : null}
+                {word2.letterArr[2]?<span className="animate__animated animate__bounceInUp animate__fast">{word2.letterArr[2]}</span> : null}
+                {word2.letterArr[3]?<span className="animate__animated animate__bounceInUp animate__fast">{word2.letterArr[3]}</span> : null}
+                {word2.letterArr[4]?<span className="animate__animated animate__bounceInUp animate__fast">{word2.letterArr[4]}</span> : null}
+                {word2.letterArr[5]?<span className="animate__animated animate__bounceInUp animate__fast">{word2.letterArr[5]}</span> : null}
+                {word2.letterArr[6]?<span className="animate__animated animate__bounceInUp animate__fast">{word2.letterArr[6]}</span> : null}
                 
                 <p>{word2.score}</p>
                 <button value={word2.letterArr} id='word2' onClick={handleSubmit} style={{
@@ -116,13 +117,13 @@ function Word({handleClearAlreadyUsed, errors, setErrors, errorCleanup}){
             {word2.sent? <div style={{
                 opacity: word3.sent? '50%' : null,
             }}>
-                <span className='word-piece'>{word3.letterArr[0]? word3.letterArr[0] : null}</span>
-                <span className='word-piece'>{word3.letterArr[1]? word3.letterArr[1] : null}</span>
-                <span className='word-piece'>{word3.letterArr[2]? word3.letterArr[2] : null}</span>
-                <span className='word-piece'>{word3.letterArr[3]? word3.letterArr[3] : null}</span>
-                <span className='word-piece'>{word3.letterArr[4]? word3.letterArr[4] : null}</span>
-                <span className='word-piece'>{word3.letterArr[5]? word3.letterArr[5] : null}</span>
-                <span className='word-piece'>{word3.letterArr[6]? word3.letterArr[6] : null}</span>
+                {word3.letterArr[0]?<span className="animate__animated animate__bounceInUp animate__fast">{word3.letterArr[0]}</span> : null}
+                {word3.letterArr[1]?<span className="animate__animated animate__bounceInUp animate__fast">{word3.letterArr[1]}</span> : null}
+                {word3.letterArr[2]?<span className="animate__animated animate__bounceInUp animate__fast">{word3.letterArr[2]}</span> : null}
+                {word3.letterArr[3]?<span className="animate__animated animate__bounceInUp animate__fast">{word3.letterArr[3]}</span> : null}
+                {word3.letterArr[4]?<span className="animate__animated animate__bounceInUp animate__fast">{word3.letterArr[4]}</span> : null}
+                {word3.letterArr[5]?<span className="animate__animated animate__bounceInUp animate__fast">{word3.letterArr[5]}</span> : null}
+                {word3.letterArr[6]?<span className="animate__animated animate__bounceInUp animate__fast">{word3.letterArr[6]}</span> : null}
 
                 <p>{word3.score}</p>
                 <button value={word3.letterArr} id='word3' onClick={handleSubmit} style={{
@@ -132,13 +133,13 @@ function Word({handleClearAlreadyUsed, errors, setErrors, errorCleanup}){
             {word3.sent? <div style={{
                 opacity: word4.sent? '50%' : null,
             }}>
-                <span className='word-piece'>{word4.letterArr[0]? word4.letterArr[0] : null}</span>
-                <span className='word-piece'>{word4.letterArr[1]? word4.letterArr[1] : null}</span>
-                <span className='word-piece'>{word4.letterArr[2]? word4.letterArr[2] : null}</span>
-                <span className='word-piece'>{word4.letterArr[3]? word4.letterArr[3] : null}</span>
-                <span className='word-piece'>{word4.letterArr[4]? word4.letterArr[4] : null}</span>
-                <span className='word-piece'>{word4.letterArr[5]? word4.letterArr[5] : null}</span>
-                <span className='word-piece'>{word4.letterArr[6]? word4.letterArr[6] : null}</span>
+                {word4.letterArr[0]?<span className="animate__animated animate__bounceInUp animate__fast">{word4.letterArr[0]}</span> : null}
+                {word4.letterArr[1]?<span className="animate__animated animate__bounceInUp animate__fast">{word4.letterArr[1]}</span> : null}
+                {word4.letterArr[2]?<span className="animate__animated animate__bounceInUp animate__fast">{word4.letterArr[2]}</span> : null}
+                {word4.letterArr[3]?<span className="animate__animated animate__bounceInUp animate__fast">{word4.letterArr[3]}</span> : null}
+                {word4.letterArr[4]?<span className="animate__animated animate__bounceInUp animate__fast">{word4.letterArr[4]}</span> : null}
+                {word4.letterArr[5]?<span className="animate__animated animate__bounceInUp animate__fast">{word4.letterArr[5]}</span> : null}
+                {word4.letterArr[6]?<span className="animate__animated animate__bounceInUp animate__fast">{word4.letterArr[6]}</span> : null}
 
                 <p>{word4.score}</p>
                 <button value={word4.letterArr} id='word4' onClick={handleSubmit} style={{
@@ -148,13 +149,13 @@ function Word({handleClearAlreadyUsed, errors, setErrors, errorCleanup}){
             {word4.sent? <div style={{
                 opacity: word5.sent? '50%' : null,
             }}>
-                <span className='word-piece'>{word5.letterArr[0]? word5.letterArr[0] : null}</span>
-                <span className='word-piece'>{word5.letterArr[1]? word5.letterArr[1] : null}</span>
-                <span className='word-piece'>{word5.letterArr[2]? word5.letterArr[2] : null}</span>
-                <span className='word-piece'>{word5.letterArr[3]? word5.letterArr[3] : null}</span>
-                <span className='word-piece'>{word5.letterArr[4]? word5.letterArr[4] : null}</span>
-                <span className='word-piece'>{word5.letterArr[5]? word5.letterArr[5] : null}</span>
-                <span className='word-piece'>{word5.letterArr[6]? word5.letterArr[6] : null}</span>
+                {word5.letterArr[0]?<span className="animate__animated animate__bounceInUp animate__fast">{word5.letterArr[0]}</span> : null}
+                {word5.letterArr[1]?<span className="animate__animated animate__bounceInUp animate__fast">{word5.letterArr[1]}</span> : null}
+                {word5.letterArr[2]?<span className="animate__animated animate__bounceInUp animate__fast">{word5.letterArr[2]}</span> : null}
+                {word5.letterArr[3]?<span className="animate__animated animate__bounceInUp animate__fast">{word5.letterArr[3]}</span> : null}
+                {word5.letterArr[4]?<span className="animate__animated animate__bounceInUp animate__fast">{word5.letterArr[4]}</span> : null}
+                {word5.letterArr[5]?<span className="animate__animated animate__bounceInUp animate__fast">{word5.letterArr[5]}</span> : null}
+                {word5.letterArr[6]?<span className="animate__animated animate__bounceInUp animate__fast">{word5.letterArr[6]}</span> : null}
 
                 <p>{word5.score}</p>
                 <button value={word5.letterArr} id='word5' onClick={handleSubmit} style={{

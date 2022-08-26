@@ -1,3 +1,5 @@
+@import 'animate.css';
+
 .words-container{
     position: absolute;
     width: 100%;
@@ -5,32 +7,33 @@
     flex-direction: column;
     left: 0;
     top: 15%;
-    transition: all ease .5s;
+
 
     div{
         align-self: center ;
         display: grid;
         padding: .5em;
-        grid-template-columns: repeat(7, 22px) 40px 120px;
-        grid-column-gap: 1em;
-        border: solid grey;
-        width: 450px;
+        grid-template-columns: repeat(7, 20px) 50px 20px 100px;
+        border-radius: 1em;
+
         
         span{
             align-self: center;
         }
 
         p{
-            grid-column: 8;
+            grid-column: 9;
             grid-row: 1;
         }
 
         button{
             height: 30px;
-            align-self: center;
+            grid-column: 10;
+            grid-row: 1;
             margin: 1em;
             border: none;
             border-radius: 5em;
+            transition: all ease .5s;
         }
 
         

@@ -37,9 +37,38 @@ function Main({showNavClick, toggleNavPop, handleClosePopUp, scramble, pointsObj
     function handleClearAlreadyUsed(){
         setAlreadyUsed([])
     }
-    const guessDisplay = <div id='guess' style={{
-        backgroundColor: guessCount > 3 ? 'green' : 'orange' && guessCount < 2 ? 'red' : 'orange'
-    }}>{guessCount} tries left</div>
+    const guessDisplay = <div id='guess'>
+        <span style={{
+            backgroundColor: guessCount > 4? 'lightgreen' : 'red',
+            width: '20px',
+            height: '20px',
+            borderRadius: '5em'
+        }}></span>
+        <span style={{
+            backgroundColor: guessCount > 3 ? 'lightgreen' : 'red',
+            width: '20px',
+            height: '20px',
+            borderRadius: '5em'
+        }}></span>
+        <span style={{
+            backgroundColor: guessCount > 2 ? 'lightgreen' : 'red',
+            width: '20px',
+            height: '20px',
+            borderRadius: '5em'
+        }}></span>
+        <span style={{
+            backgroundColor:  guessCount > 1 ? 'lightgreen' : 'red',
+            width: '20px',
+            height: '20px',
+            borderRadius: '5em'
+        }}></span>
+        <span style={{
+            backgroundColor: guessCount > 0 ? 'lightgreen' : 'red',
+            width: '20px',
+            height: '20px',
+            borderRadius: '5em'
+        }}></span>
+    </div>
 
     const errorDisplay = <div id='errors'>{errors.message}</div>
 

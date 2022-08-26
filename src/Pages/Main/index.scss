@@ -9,11 +9,11 @@
 
     #guess{
         position: absolute;
-        bottom: 7%;
-        left: 10%;
-        padding: .75em;
-        border: solid grey;
-        font-size: x-large;
+        bottom: 1%; 
+        display: flex;
+        align-self: center;
+        padding: .5em;
+        gap: .5em;
     }
 
     #errors{
