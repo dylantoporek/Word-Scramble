@@ -1,51 +1,72 @@
 import '../Result/index.scss'
+import React, {useState} from 'react'
 
 function Result({props}){
+    const word = props.response.word
+    const [definitions, setDefinitions] = useState([])
 
     console.log(props)
     const definitionsNouns = props.response.results.map((word) => {
         if(word.partOfSpeech === 'noun') {
             return (
-                <li>
-                    {word.definition}
-                </li>
+                <div>
+                    <li>noun</li>
+                    <span>
+                        {word.definition}
+                    </span>
+                </div>
             )
         }
-    })
+    }).filter((result)=> result !== undefined)
 
     const definitionsVerb = props.response.results.map((word) => {
         if(word.partOfSpeech === 'verb') {
             return (
-                <li>
-                    {word.definition}
-                </li>
+                <div>
+                    <li>verb</li>
+                    <span>
+                        {word.definition}
+                    </span>
+                </div>
+                
             )
         }
-    })
+    }).filter((result)=> result !== undefined)
+    
+    const definitionsAdjective = props.response.results.map((word) => {
+        if(word.partOfSpeech === 'adjective') {
+            return (
+                <div>
+                    <li>adjective</li>
+                    <span>
+                        {word.definition}
+                    </span>
+                </div>
+                
+            )
+        }
+    }).filter((result)=> result !== undefined)
+
 
     console.log("Your nouns are: ", definitionsNouns)
-
+    console.log('your verbs are: ', definitionsVerb)
+    
     return (
         <div className='result-container'>
             <div className='result-word'>
-                <h2>
-                    {props.response.word}
-                </h2>
-                <br />
-                /{props.response.pronunciation.all}/
+                <h3>
+                    {props.response.word.toUpperCase()}
+                </h3>
             </div>
-             <br />
-            {props.response.results[0].partOfSpeech}
-            <div>
-                Noun 
-                <br />
+            <div> 
                 <ul>
-                    {definitionsNouns}
+                    {definitionsNouns.length > 0? definitionsNouns[0] : null}
                 </ul>
-                Verb 
-                <br />
                 <ul>
-                    {definitionsVerb}
+                    {definitionsVerb.length > 0? definitionsVerb[0] : null}
+                </ul>
+                <ul>
+                    {definitionsAdjective.length > 0? definitionsAdjective[0] : null}
                 </ul>
                 
                 {/* {props.response.results[0].definition} */}
